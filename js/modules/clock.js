@@ -1,10 +1,20 @@
-import { mutateState, getState } from './state.js';
+import { getState } from './state.js';
+
+export function getNow(){
+  return getState().clockState.now || Date.now();
+}
+
 export function applyElapsedTime(){
-  const state=getState(); const now=Date.now(); const last=state.clockState.lastSavedAt||now; const elapsed=Math.max(0, now-last);
-  mutateState(s=>{ s.clockState.currentTime=now; s.clockState.lastSavedAt=now; s.clockState.elapsedMs=elapsed; });
-  return elapsed;
+  const state = getState();
+  const now = Date.now();
+  const last = state.clockState.lastSavedAt || now;
+  state.clockState.now = now;
+  state.clockState.elapsedMs = Math.max(0, now - last);
 }
+
 export function tickClock(){
-  mutateState(s=>{ if(s.clockState.freezeTime) return; s.clockState.currentTime += 1000*(s.clockState.speedMultiplier||1); });
+  const state = getState();
+  if(state.clockState.freezeTime) return state.clockState.now;
+  state.clockState.now = (state.clockState.now || Date.now()) + (1000 * (state.clockState.speedMultiplier || 1));
+  return state.clockState.now;
 }
-export const getNow=()=>getState().clockState.currentTime||Date.now();

@@ -1,74 +1,10 @@
 [
-  {
-    "id": "vocalist",
-    "name": "Vocalist",
-    "description": "Vocalist role focus.",
-    "effects": {
-      "charisma": 5,
-      "talent": 3
-    }
-  },
-  {
-    "id": "guitarist",
-    "name": "Guitarist",
-    "description": "Guitarist role focus.",
-    "effects": {
-      "technique": 3,
-      "ego": 3
-    }
-  },
-  {
-    "id": "bassist",
-    "name": "Bassist",
-    "description": "Bassist role focus.",
-    "effects": {
-      "discipline": 4,
-      "resilience": 2
-    }
-  },
-  {
-    "id": "drummer",
-    "name": "Drummer",
-    "description": "Drummer role focus.",
-    "effects": {
-      "resilience": 4,
-      "technique": 2
-    }
-  },
-  {
-    "id": "keys",
-    "name": "Keys",
-    "description": "Keys role focus.",
-    "effects": {
-      "technique": 4,
-      "originality": 2
-    }
-  },
-  {
-    "id": "strings",
-    "name": "Strings",
-    "description": "Strings role focus.",
-    "effects": {
-      "discipline": 5,
-      "technique": 2
-    }
-  },
-  {
-    "id": "noise_artist",
-    "name": "Noise Artist",
-    "description": "Noise Artist role focus.",
-    "effects": {
-      "weirdness": 6,
-      "originality": 3
-    }
-  },
-  {
-    "id": "producer",
-    "name": "Producer Goblin",
-    "description": "Producer Goblin role focus.",
-    "effects": {
-      "originality": 4,
-      "discipline": 2
-    }
-  }
+  {"id":"vocalist","name":"Vocalist"},
+  {"id":"guitarist","name":"Guitarist"},
+  {"id":"bassist","name":"Bassist"},
+  {"id":"drummer","name":"Drummer"},
+  {"id":"keys","name":"Keys"},
+  {"id":"noise_artist","name":"Noise Artist"},
+  {"id":"producer","name":"Producer Goblin"},
+  {"id":"strings","name":"Strings Freak"}
 ]

@@ -17,6 +17,7 @@
         <div class="stat-chip">Cash <span id="cashValue">$0</span></div>
         <div class="stat-chip">Clock <span id="clockValue">--:--</span></div>
         <div class="stat-chip">Alerts <span id="alertCount">0</span></div>
+        <div class="stat-chip">Save Slot <span id="saveSlotLabel">1</span></div>
       </div>
     </header>
 
@@ -30,12 +31,15 @@
           <div class="screen-head-actions">
             <button data-action="openRoster" class="tiny-btn">Roster</button>
             <button data-action="openLab" class="tiny-btn">Lab</button>
+            <button data-action="openBands" class="tiny-btn">Bands</button>
+            <button data-action="openStudio" class="tiny-btn">Studio</button>
             <button data-action="openSettings" class="tiny-btn">Settings</button>
           </div>
         </div>
 
-        <div id="musicianScene" class="musician-scene stage-embryo">
+        <div id="musicianScene" class="musician-scene stage-embryo room-shared idle-anim">
           <div class="scene-background"></div>
+          <div class="screen-static"></div>
           <div id="statusOverlay" class="status-overlay hidden"></div>
           <div id="musicianSprite" class="musician-sprite">
             <div class="sprite-body"></div>
@@ -73,11 +77,12 @@
         <button class="tool-btn" data-action="cloneSelected">Rebirth Clone</button>
         <button class="tool-btn" data-action="openShop">Shop</button>
         <button class="tool-btn" data-action="openCheats">Cheats</button>
+        <button class="tool-btn" data-action="openBands">Bands</button>
       </aside>
     </main>
 
     <footer class="footer-hint panel">
-      Real-time decay continues while the browser is closed. Use the cheat terminal for testing, stage skips, and time acceleration.
+      Real-time decay continues while the browser is closed. Shared-room studio upgrades affect all active musicians. Use the cheat terminal for testing, stage skips, and time acceleration.
     </footer>
   </div>
 

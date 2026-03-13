@@ -1,0 +1,92 @@
+[
+  {
+    "id": "caffeine",
+    "name": "Caffeine",
+    "effects": {
+      "discipline": 2,
+      "rest": -6
+    },
+    "severity": "funny"
+  },
+  {
+    "id": "nicotine",
+    "name": "Nicotine",
+    "effects": {
+      "charisma": 1,
+      "health": -5
+    },
+    "severity": "grimy"
+  },
+  {
+    "id": "booze",
+    "name": "Booze",
+    "effects": {
+      "ego": 2,
+      "technique": -2
+    },
+    "severity": "grimy"
+  },
+  {
+    "id": "validation",
+    "name": "Validation",
+    "effects": {
+      "charisma": 3,
+      "mood": -5
+    },
+    "severity": "funny"
+  },
+  {
+    "id": "attention",
+    "name": "Attention",
+    "effects": {
+      "charisma": 4,
+      "discipline": -1
+    },
+    "severity": "funny"
+  },
+  {
+    "id": "energy_drinks",
+    "name": "Energy Drinks",
+    "effects": {
+      "originality": 2,
+      "rest": -7
+    },
+    "severity": "funny"
+  },
+  {
+    "id": "painkillers",
+    "name": "Painkillers",
+    "effects": {
+      "resilience": 1,
+      "health": -6
+    },
+    "severity": "grimy"
+  },
+  {
+    "id": "ritual_smoke",
+    "name": "Ritual Smoke",
+    "effects": {
+      "weirdness": 3,
+      "health": -4
+    },
+    "severity": "mix"
+  },
+  {
+    "id": "doomscrolling",
+    "name": "Doomscrolling",
+    "effects": {
+      "originality": 2,
+      "mood": -6
+    },
+    "severity": "funny"
+  },
+  {
+    "id": "cough_syrup",
+    "name": "Cough Syrup Mysticism",
+    "effects": {
+      "weirdness": 5,
+      "technique": -3
+    },
+    "severity": "mix"
+  }
+]

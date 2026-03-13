@@ -1,3 +1,12 @@
 import { getDataStore } from './state.js';
-export const getTraitObjects=(ids=[])=>ids.map(id=>(getDataStore().traits?.traits||[]).find(t=>t.id===id)).filter(Boolean);
-export function computeTraitMods(ids=[]){ const mods={}; getTraitObjects(ids).forEach(t=>Object.entries(t.mods||{}).forEach(([k,v])=>mods[k]=(mods[k]||0)+v)); return mods; }
+
+export function computeTraitMods(musician){
+  const defs = getDataStore().traits || [];
+  return musician.traitIds.reduce((acc, id)=>{
+    const def = defs.find(t=>t.id===id);
+    if(def?.mods){
+      Object.entries(def.mods).forEach(([k,v])=>{ acc[k] = (acc[k] || 0) + v; });
+    }
+    return acc;
+  }, {});
+}

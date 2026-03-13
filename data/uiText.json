@@ -1,15 +1,4 @@
 {
-  "welcome": "Welcome back to the lab.",
-  "emptyRoster": "No active mutants yet. Grow one in the lab.",
-  "critical": "CRITICAL",
-  "dead": "DEAD",
-  "frozen": "FROZEN",
-  "gigActive": "On Gig",
-  "stageNames": {
-    "embryo": "Tube Embryo",
-    "infant": "Infant",
-    "child": "Child",
-    "teen": "Teen Disaster",
-    "adult": "Adult"
-  }
+  "version":"2.0",
+  "notes":"Family tree DNA panel, shared-room studio upgrades, bands with aggregate stats, and five save slots added."
 }

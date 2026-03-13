@@ -1,0 +1,216 @@
+{
+  "events": [
+    {
+      "id": "swallowed_pick",
+      "name": "Swallowed a Guitar Pick",
+      "type": "care",
+      "stage": [
+        "child",
+        "teen",
+        "adult"
+      ],
+      "text": "{name} swallowed a guitar pick while trying to look mysterious.",
+      "effects": {
+        "health": -8,
+        "mood": -4
+      }
+    },
+    {
+      "id": "cryptic_rant",
+      "name": "Cryptic Rant Posted",
+      "type": "career",
+      "stage": [
+        "teen",
+        "adult"
+      ],
+      "text": "{name} posted a cryptic rant at 3:14 AM and now feels oddly powerful.",
+      "effects": {
+        "mood": 6,
+        "fanbase": 4,
+        "stress": 3
+      }
+    },
+    {
+      "id": "sound_tech_feud",
+      "name": "Started Feud With Sound Tech",
+      "type": "career",
+      "stage": [
+        "adult"
+      ],
+      "text": "{name} insulted a sound tech and now every monitor in town smells revenge.",
+      "effects": {
+        "mood": 2,
+        "stress": 8
+      }
+    },
+    {
+      "id": "wrote_masterpiece",
+      "name": "Wrote a Masterpiece",
+      "type": "career",
+      "stage": [
+        "teen",
+        "adult"
+      ],
+      "text": "{name} wrote something incredible and refuses to explain it.",
+      "effects": {
+        "inspiration": 14,
+        "xp": 8,
+        "fame": 4
+      }
+    },
+    {
+      "id": "ate_amp_foam",
+      "name": "Ate Amp Foam",
+      "type": "care",
+      "stage": [
+        "infant",
+        "child",
+        "teen"
+      ],
+      "text": "{name} ate amp foam. Again.",
+      "effects": {
+        "health": -6,
+        "food": 8
+      }
+    },
+    {
+      "id": "stole_strings",
+      "name": "Stole Strings",
+      "type": "social",
+      "stage": [
+        "teen",
+        "adult"
+      ],
+      "text": "{name} stole strings from another mutant and called it collaboration.",
+      "effects": {
+        "mood": 4,
+        "cleanliness": -4
+      }
+    },
+    {
+      "id": "learned_jazz",
+      "name": "Learned Jazz Against Your Wishes",
+      "type": "mutation",
+      "stage": [
+        "child",
+        "teen",
+        "adult"
+      ],
+      "text": "{name} accidentally learned jazz shapes in secret.",
+      "effects": {
+        "technique": 3,
+        "weirdness": 2
+      }
+    },
+    {
+      "id": "merch_bin",
+      "name": "Slept in Merch Bin",
+      "type": "care",
+      "stage": [
+        "teen",
+        "adult"
+      ],
+      "text": "{name} slept in the merch bin and woke up full of lint and purpose.",
+      "effects": {
+        "rest": 10,
+        "cleanliness": -10
+      }
+    },
+    {
+      "id": "viral_wrong_reason",
+      "name": "Went Viral for the Wrong Reason",
+      "type": "career",
+      "stage": [
+        "adult"
+      ],
+      "text": "A clip of {name} falling off a monitor stack is now everywhere.",
+      "effects": {
+        "fanbase": 10,
+        "mood": -6,
+        "fame": 6
+      }
+    },
+    {
+      "id": "tube_crack",
+      "name": "Tube Glass Crack",
+      "type": "care",
+      "stage": [
+        "embryo"
+      ],
+      "text": "The tube around {name} developed a dramatic crack and leaked slime.",
+      "effects": {
+        "health": -8,
+        "cleanliness": -10
+      }
+    },
+    {
+      "id": "demands_handwater",
+      "name": "Demands Hand-Crafted Water",
+      "type": "care",
+      "stage": [
+        "child",
+        "teen",
+        "adult"
+      ],
+      "text": "{name} refuses normal hydration and demands hand-crafted water.",
+      "effects": {
+        "mood": -5,
+        "water": -8
+      }
+    },
+    {
+      "id": "joined_second_band",
+      "name": "Joined a Second Band",
+      "type": "career",
+      "stage": [
+        "adult"
+      ],
+      "text": "{name} joined a second band without asking. The chaos is marketable.",
+      "effects": {
+        "fanbase": 6,
+        "stress": 6
+      }
+    },
+    {
+      "id": "green_room_destruction",
+      "name": "Destroyed Green Room",
+      "type": "career",
+      "stage": [
+        "adult"
+      ],
+      "text": "{name} trashed a green room like a tiny landfill tornado.",
+      "effects": {
+        "cash": -20,
+        "mood": 6,
+        "stress": 4
+      }
+    },
+    {
+      "id": "mysterious_rash",
+      "name": "Mysterious Rash After Ska",
+      "type": "care",
+      "stage": [
+        "child",
+        "teen"
+      ],
+      "text": "{name} developed a mysterious rash after exposure to ska horns.",
+      "effects": {
+        "health": -5,
+        "weirdness": 1
+      }
+    },
+    {
+      "id": "fan_mail",
+      "name": "Disturbing Fan Mail",
+      "type": "career",
+      "stage": [
+        "adult"
+      ],
+      "text": "{name} received fan mail made entirely of glitter and blood-red ink.",
+      "effects": {
+        "fanbase": 5,
+        "stress": 5
+      }
+    }
+  ]
+}

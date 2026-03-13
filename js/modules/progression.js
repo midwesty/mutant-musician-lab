@@ -1,8 +1,27 @@
-import { STAGE_CONFIG } from './constants.js';
-import { getAgeHours, clamp } from './utils.js';
-export function getStageFromAge(createdAt, now){ const age=getAgeHours(createdAt, now); let current=STAGE_CONFIG[0].id; STAGE_CONFIG.forEach(s=>{ if(age>=s.hours) current=s.id; }); return current; }
-export function applyStageProgression(m, now, notifications=[]){
-  if(m.isDead) return;
-  const next=getStageFromAge(m.createdAt, now);
-  if(next!==m.stage){ m.stage=next; m.needs.mood=clamp(m.needs.mood+5); m.careerStats.gigXP+=3; notifications.push({id:`${m.id}_${Date.now()}_stage`, type:'stage', text:`${m.name} advanced to ${next.toUpperCase()}.`}); }
+import { LIFE_STAGE_MS, LIFE_STAGE_ORDER } from './constants.js';
+
+export function applyStageProgression(musician, now, notifications=[]){
+  const age = now - musician.createdAt;
+  let nextStage = 'adult';
+  for(const stage of LIFE_STAGE_ORDER){
+    if(age >= LIFE_STAGE_MS[stage]) nextStage = stage;
+  }
+  if(nextStage !== musician.stage){
+    musician.stage = nextStage;
+    notifications.unshift({ type:'stage', text:`${musician.name} has entered the ${nextStage} stage.` });
+    if(nextStage==='adult'){
+      musician.careerStats.gigXP += 8;
+      musician.needs.mood = Math.min(100, musician.needs.mood + 8);
+    }
+  }
+}
+
+export function getStageProgress(musician, now){
+  const age = now - musician.createdAt;
+  const currentStart = LIFE_STAGE_MS[musician.stage] || 0;
+  const idx = LIFE_STAGE_ORDER.indexOf(musician.stage);
+  const nextStage = LIFE_STAGE_ORDER[idx + 1];
+  if(!nextStage) return { remainingMs:0, nextStage:null };
+  const end = LIFE_STAGE_MS[nextStage];
+  return { remainingMs: Math.max(0, end - age), nextStage };
 }

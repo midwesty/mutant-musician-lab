@@ -1,7 +1,15 @@
-import { randInt } from './utils.js';
-export function runPractice(a,b=null){
-  const bonus=b?6:3, chem=b?randInt(1,5):0;
-  a.careerStats.gigXP += randInt(4,8)+bonus; a.needs.inspiration=Math.min(100,a.needs.inspiration+randInt(8,15)); a.needs.rest=Math.max(0,a.needs.rest-randInt(5,9)); a.careerStats.stress=Math.min(100,a.careerStats.stress+randInt(1,4));
-  if(b){ b.careerStats.gigXP += randInt(4,8)+bonus; b.needs.inspiration=Math.min(100,b.needs.inspiration+randInt(8,15)); b.needs.rest=Math.max(0,b.needs.rest-randInt(5,9)); b.careerStats.chemistry += chem; a.careerStats.chemistry += chem; }
-  return { summary:b?`${a.name} and ${b.name} rehearse in a sweaty burst of accidental growth.`:`${a.name} practices alone until the room smells like effort.` };
+import { clamp } from './utils.js';
+
+export function runPractice(primary, partner=null){
+  const gain = partner ? 4 : 2;
+  primary.baseStats.technique = clamp(primary.baseStats.technique + gain, 0, 99);
+  primary.baseStats.discipline = clamp(primary.baseStats.discipline + 2, 0, 99);
+  primary.needs.rest = clamp(primary.needs.rest - 6, 0, 100);
+  primary.needs.inspiration = clamp(primary.needs.inspiration + 5, 0, 100);
+  primary.careerStats.chemistry = clamp((primary.careerStats.chemistry || 0) + (partner ? 6 : 2), 0, 100);
+  if(partner){
+    partner.baseStats.technique = clamp(partner.baseStats.technique + 3, 0, 99);
+    partner.careerStats.chemistry = clamp((partner.careerStats.chemistry || 0) + 5, 0, 100);
+  }
+  return { summary: partner ? `${primary.name} and ${partner.name} rehearsed together.` : `${primary.name} practiced alone and got slightly tighter.` };
 }

@@ -3,7 +3,7 @@ import { setDataStore, setState, getState, mutateState, getDataStore } from './m
 import { loadSave, saveState, clearSave } from './modules/saveLoad.js';
 import { applyElapsedTime, tickClock, getNow } from './modules/clock.js';
 import { renderApp, getSelectedMusician } from './modules/render.js';
-import { bindGlobalUI, registerUIHandlers, showToast, openStarterModal, openCreationModal, openRosterModal, openInfoModal, openInventoryModal, openShopModal, openGigsModal, openAssignGigModal, openDNAModal, openBattleModal, openPracticeModal, openCheatsModal, openSettingsModal, promptRoleChange, closeModal, openModal } from './modules/ui.js';
+import { bindGlobalUI, registerUIHandlers, showToast, openStarterModal, openCreationModal, openRosterModal, openInfoModal, openInventoryModal, openShopModal, openGigsModal, openAssignGigModal, openDNAModal, openBattleModal, openPracticeModal, openCheatsModal, openSettingsModal, promptRoleChange, closeModal, openModal, openBandsModal, openStudioModal } from './modules/ui.js';
 import { playSound } from './modules/audio.js';
 import { getStarterKits, getDefaultChoicesFromStarter, getCreationCatalog } from './modules/creation.js';
 import { createMusicianFromChoices, createMusicianFromDNAArchive } from './modules/musicianFactory.js';
@@ -16,8 +16,7 @@ import { buildBattleExport, parseBattleImport, runBattle } from './modules/battl
 import { runPractice } from './modules/practice.js';
 import { runCheat } from './modules/cheats.js';
 import { spliceDNA } from './modules/genetics.js';
-import { computeTraitMods } from './modules/traits.js';
-import { computeMutationMods } from './modules/mutations.js';
+import { createBand } from './modules/bands.js';
 
 async function boot(){
   const data = {};
@@ -26,7 +25,7 @@ async function boot(){
     data[name] = await res.json();
   }
   setDataStore(data);
-  setState(loadSave());
+  setState(loadSave(1));
   applyElapsedTime();
   simulateElapsed();
   refreshGigBoard(getState(), getNow());
@@ -48,10 +47,10 @@ boot();
 function startLoop(){
   setInterval(()=>{
     tickClock();
-    simulateTick(1000*(getState().clockState.speedMultiplier||1));
+    simulateTick(getState().clockState.freezeTime ? 0 : 1000*(getState().clockState.speedMultiplier||1));
     render();
   }, 1000);
-  setInterval(()=>save(), getState().settings.fastTickSeconds * 1000);
+  setInterval(()=>save(), Math.max(5000, getState().settings.fastTickSeconds * 1000));
 }
 
 function simulateElapsed(){
@@ -67,7 +66,7 @@ function simulateTick(elapsedMs){
     applyStageProgression(m, now, state.notifications);
     const evt = maybeTriggerRandomEvent(m, state, now);
     if(evt) state.notifications.unshift(evt);
-    if(m.isDead) archiveMusician(m);
+    if(m.isDead) archiveMusician(m, true);
   });
   const gigResults = resolveFinishedGigs(state, now);
   if(gigResults.length) state.notifications.unshift(...gigResults);
@@ -84,7 +83,8 @@ function ensureDNAArchive(){
 
 function archiveMusician(m, silent=false){
   const state=getState();
-  if(!state.dnaArchive.some(d=>d.dnaId===m.dnaId)){
+  const existing = state.dnaArchive.find(d=>d.dnaId===m.dnaId);
+  if(!existing){
     state.dnaArchive.unshift({
       dnaId:m.dnaId,
       name:m.name,
@@ -100,9 +100,13 @@ function archiveMusician(m, silent=false){
       snapshotDNA:m.snapshotDNA || null
     });
     if(!silent) showToast(`${m.name} added to DNA archive.`, 'warn');
-  } else if(m.snapshotDNA){
-    const rec=state.dnaArchive.find(d=>d.dnaId===m.dnaId);
-    rec.snapshotDNA = m.snapshotDNA;
+  } else {
+    existing.name = m.name;
+    existing.lineage = [...(m.lineage || [])];
+    existing.generation = m.generation || existing.generation || 1;
+    existing.snapshotDNA = m.snapshotDNA || existing.snapshotDNA || null;
+    existing.mutationIds = [...m.mutationIds];
+    existing.baseStats = {...m.baseStats};
   }
 }
 
@@ -116,16 +120,25 @@ function ensureSelection(){
 
 function trimNotifications(){
   const state=getState();
-  state.notifications = state.notifications.slice(0, 30);
+  state.notifications = state.notifications.slice(0, 40);
 }
 
 function render(){
   renderApp(getState(), getDataStore());
 }
 
-function save(){
+function save(slot = getState().playerProfile.activeSaveSlot){
   mutateState(s=>{ s.clockState.lastSavedAt = Date.now(); });
-  saveState(getState());
+  saveState(getState(), slot);
+}
+
+function switchSlot(slot){
+  setState(loadSave(slot));
+  applyElapsedTime();
+  simulateElapsed();
+  refreshGigBoard(getState(), getNow());
+  ensureDNAArchive();
+  render();
 }
 
 function handleAction(action){
@@ -138,7 +151,6 @@ function handleAction(action){
     if(selected.isFrozen) return showToast('Thaw them first.', 'bad');
     applyDirectEffects(selected, CARE_ACTIONS[action]);
     state.playerProfile.cash = Math.max(0, state.playerProfile.cash + (CARE_ACTIONS[action].cash || 0));
-    if(action==='vice') selected.careerStats.stress = Math.max(0, selected.careerStats.stress - 2);
     showToast(`${selected.name} received ${action}.`);
   } else if(action==='practiceAction'){
     if(!selected) return showToast('No musician selected.', 'bad');
@@ -162,6 +174,10 @@ function handleAction(action){
     openBattleModal(state, getDataStore(), selected);
   } else if(action==='openCheats'){
     openCheatsModal();
+  } else if(action==='openBands'){
+    openBandsModal(state);
+  } else if(action==='openStudio'){
+    openStudioModal(state);
   } else if(action==='freezeToggle'){
     if(!selected) return showToast('No musician selected.', 'bad');
     selected.isFrozen = !selected.isFrozen;
@@ -185,20 +201,24 @@ function handleAction(action){
 function handleModalAction(action, btn){
   const state=getState();
   const selected=getSelectedMusician(state);
-  if(action==='pickStarter'){
-    const choices=getDefaultChoicesFromStarter(btn.dataset.kitId);
-    const musician=createMusicianFromChoices(choices, 'starter_kit');
-    state.musicians.push(musician);
-    state.playerProfile.selectedMusicianId = musician.id;
+  if(action==='createStarterBatch'){
+    const picks = [...document.querySelectorAll('input[name="starterKit"]:checked')].slice(0,3).map(el=>el.value);
+    if(!picks.length) return showToast('Choose at least one starter kit.', 'bad');
+    picks.forEach(kitId=>{
+      const choices=getDefaultChoicesFromStarter(kitId);
+      const musician=createMusicianFromChoices(choices, 'starter_kit');
+      state.musicians.push(musician);
+      archiveMusician(musician, true);
+    });
+    state.playerProfile.selectedMusicianId = state.musicians[0]?.id || null;
     state.playerProfile.starterChosen = true;
-    archiveMusician(musician, true);
     closeModal();
-    showToast(`${musician.name} created from starter kit.`);
+    showToast(`Starter set incubated: ${picks.length} embryo${picks.length>1?'s':''}.`);
   }
   else if(action==='createEmbryo'){
     const form=document.getElementById('creationForm');
     const formData=new FormData(form);
-    const choices=Object.fromEntries([...formData.entries()].filter(([k,v])=>['biomass','body','neural','genre','vice','catalyst','role'].includes(k)));
+    const choices=Object.fromEntries([...formData.entries()].filter(([k])=>['biomass','body','neural','genre','vice','catalyst','role'].includes(k)));
     const bonusItemId=formData.get('bonusItem');
     let bonusItems=[];
     if(bonusItemId){ const item=getItemDef(bonusItemId); if(item && removeItem(state, bonusItemId, 1)) bonusItems=[item]; }
@@ -258,7 +278,10 @@ function handleModalAction(action, btn){
     openAssignGigModal(state, getDataStore(), btn.dataset.gigBoardId);
   }
   else if(action==='assignGig'){
-    const m=state.musicians.find(x=>x.id===btn.dataset.musicianId); const out=assignGig(state, m, btn.dataset.gigBoardId, getNow());
+    let target = null;
+    if(btn.dataset.bandId) target = state.bands.find(x=>x.id===btn.dataset.bandId);
+    else target = state.musicians.find(x=>x.id===btn.dataset.musicianId);
+    const out=assignGig(state, target, btn.dataset.gigBoardId, getNow());
     showToast(out.message, out.ok?'good':'bad'); if(out.ok) playSound('gigStart'); openGigsModal(state, getDataStore());
   }
   else if(action==='rebirthFromDNA'){
@@ -287,16 +310,78 @@ function handleModalAction(action, btn){
   else if(action==='runCheat'){
     const msg=runCheat(state, btn.dataset.cheatCode, selected); showToast(msg, 'warn'); openCheatsModal();
   }
+  else if(action==='createBand'){
+    const form = document.getElementById('bandForm');
+    const formData = new FormData(form);
+    const name = String(formData.get('bandName') || '').trim();
+    const memberIds = [...document.querySelectorAll('input[name="bandMember"]:checked')].map(el=>el.value);
+    if(!name) return showToast('Give the band a name.', 'bad');
+    if(memberIds.length < 2) return showToast('Pick at least two members.', 'bad');
+    state.bands.push(createBand(name, memberIds));
+    showToast(`Band created: ${name}.`, 'good');
+    openBandsModal(state);
+  }
+  else if(action==='deleteBand'){
+    state.bands = state.bands.filter(b=>b.id !== btn.dataset.bandId);
+    showToast('Band deleted.', 'warn');
+    openBandsModal(state);
+  }
+  else if(action==='buyStudioUpgrade'){
+    const upgrade = btn.dataset.upgradeId;
+    if(upgrade === 'roomTier'){
+      const cost = 120 * state.labUpgrades.roomTier;
+      if(state.playerProfile.cash < cost) return showToast('Not enough cash.', 'bad');
+      state.playerProfile.cash -= cost;
+      state.labUpgrades.roomTier += 1;
+      showToast(`Shared room upgraded to tier ${state.labUpgrades.roomTier}.`, 'good');
+    } else if(upgrade === 'snapshotUnlocked'){
+      if(state.labUpgrades.snapshotUnlocked) return showToast('Snapshot station already installed.', 'warn');
+      if(state.playerProfile.cash < 200) return showToast('Not enough cash.', 'bad');
+      state.playerProfile.cash -= 200;
+      state.labUpgrades.snapshotUnlocked = true;
+      showToast('Snapshot station installed.', 'good');
+    } else if(upgrade === 'studioPolish'){
+      const cost = 90 + (state.labUpgrades.studioPolish * 60);
+      if(state.playerProfile.cash < cost) return showToast('Not enough cash.', 'bad');
+      state.playerProfile.cash -= cost;
+      state.labUpgrades.studioPolish += 1;
+      state.musicians.forEach(m=>{ m.needs.mood = Math.min(100, m.needs.mood + 6); });
+      showToast('Shared room mood lighting upgraded.', 'good');
+    }
+    openStudioModal(state);
+  }
   else if(action==='saveSettings'){
     state.settings.audioEnabled = document.getElementById('audioToggle').checked;
+    const motionToggle = document.getElementById('motionToggle');
+    state.settings.reduceMotion = motionToggle ? motionToggle.checked : false;
     showToast('Settings saved.');
     closeModal();
   }
   else if(action==='hardSave'){
     save(); showToast('Saved.');
   }
+  else if(action==='loadSaveSlot'){
+    switchSlot(Number(btn.dataset.slotId));
+    closeModal();
+    if(!getState().playerProfile.starterChosen) openStarterModal(getStarterKits());
+    showToast(`Loaded save slot ${btn.dataset.slotId}.`, 'good');
+  }
+  else if(action==='overwriteSaveSlot'){
+    const slot = Number(btn.dataset.slotId);
+    state.playerProfile.activeSaveSlot = slot;
+    save(slot);
+    openSettingsModal(state);
+    showToast(`Saved current game to slot ${slot}.`, 'good');
+  }
+  else if(action==='deleteSaveSlot'){
+    const slot = Number(btn.dataset.slotId);
+    clearSave(slot);
+    openSettingsModal(state);
+    showToast(`Deleted slot ${slot}.`, 'warn');
+  }
   else if(action==='wipeSave'){
-    if(confirm('Delete your save?')){ clearSave(); location.reload(); }
+    clearSave(state.playerProfile.activeSaveSlot || 1);
+    location.reload();
   }
   ensureDNAArchive();
   render();

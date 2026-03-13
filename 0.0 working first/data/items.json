@@ -1,0 +1,188 @@
+{
+  "items": [
+    {
+      "id": "venue_nachos",
+      "name": "Venue Nachos",
+      "type": "consumable",
+      "cost": 12,
+      "uses": 1,
+      "effects": {
+        "food": 22,
+        "health": -2
+      },
+      "description": "Terrible but filling."
+    },
+    {
+      "id": "electrolyte_goo",
+      "name": "Electrolyte Goo",
+      "type": "consumable",
+      "cost": 10,
+      "uses": 1,
+      "effects": {
+        "water": 25
+      },
+      "description": "Bright, sticky, helpful."
+    },
+    {
+      "id": "nap_pod",
+      "name": "Nap Pod Session",
+      "type": "consumable",
+      "cost": 18,
+      "uses": 1,
+      "effects": {
+        "rest": 28,
+        "stress": -4
+      },
+      "description": "Short-term unconsciousness with branding."
+    },
+    {
+      "id": "solvent_wipes",
+      "name": "Solvent Wipes",
+      "type": "consumable",
+      "cost": 9,
+      "uses": 1,
+      "effects": {
+        "cleanliness": 30
+      },
+      "description": "Removes grime, some dignity."
+    },
+    {
+      "id": "cheap_thrill",
+      "name": "Cheap Thrill",
+      "type": "consumable",
+      "cost": 11,
+      "uses": 1,
+      "effects": {
+        "mood": 15,
+        "vice": 20
+      },
+      "description": "A broadly suspicious indulgence."
+    },
+    {
+      "id": "practice_tape",
+      "name": "Practice Tape",
+      "type": "consumable",
+      "cost": 14,
+      "uses": 1,
+      "effects": {
+        "inspiration": 20,
+        "xp": 4
+      },
+      "description": "Educational screaming."
+    },
+    {
+      "id": "revival_kit",
+      "name": "Revival Kit",
+      "type": "revive",
+      "cost": 120,
+      "uses": 1,
+      "effects": {
+        "health": 40
+      },
+      "description": "Shock paddles, juice, and regret."
+    },
+    {
+      "id": "dna_snapshot_vial",
+      "name": "DNA Snapshot Vial",
+      "type": "upgrade_token",
+      "cost": 140,
+      "uses": 1,
+      "effects": {
+        "snapshot": 1
+      },
+      "description": "Stores a current-state genetic imprint."
+    },
+    {
+      "id": "black_market_cartilage",
+      "name": "Black-Market Cartilage",
+      "type": "creation_bonus",
+      "cost": 90,
+      "uses": 1,
+      "effects": {
+        "resilience": 6,
+        "mutationChance": 8
+      },
+      "description": "Adds body weirdness to new embryos."
+    },
+    {
+      "id": "cursed_master_tape_dust",
+      "name": "Cursed Master-Tape Dust",
+      "type": "creation_bonus",
+      "cost": 95,
+      "uses": 1,
+      "effects": {
+        "weirdness": 8,
+        "mutationChance": 10
+      },
+      "description": "A static-coated mystery powder."
+    },
+    {
+      "id": "forgotten_merch_resin",
+      "name": "Forgotten Merch Resin",
+      "type": "creation_bonus",
+      "cost": 80,
+      "uses": 1,
+      "effects": {
+        "charisma": 6,
+        "trashy": 8
+      },
+      "description": "Sticky confidence enhancer."
+    },
+    {
+      "id": "tour_sunscreen",
+      "name": "Tour Sunscreen",
+      "type": "consumable",
+      "cost": 8,
+      "uses": 1,
+      "effects": {
+        "health": 8,
+        "mood": 6
+      },
+      "description": "For outdoor gigs and emotional glare."
+    },
+    {
+      "id": "budget_strings",
+      "name": "Budget Strings",
+      "type": "gear",
+      "cost": 35,
+      "uses": 1,
+      "effects": {
+        "gigBonus": 3
+      },
+      "description": "They'll hold for at least one set."
+    },
+    {
+      "id": "better_tube_filter",
+      "name": "Better Tube Filter",
+      "type": "upgrade",
+      "cost": 160,
+      "uses": 1,
+      "effects": {
+        "decayReduction": 5
+      },
+      "description": "Reduces mess and illness for embryos."
+    },
+    {
+      "id": "lab_assistant_drone",
+      "name": "Lab Assistant Drone",
+      "type": "upgrade",
+      "cost": 240,
+      "uses": 1,
+      "effects": {
+        "automation": 1
+      },
+      "description": "Cleans some mess automatically."
+    },
+    {
+      "id": "advanced_splice_license",
+      "name": "Advanced Splice License",
+      "type": "upgrade",
+      "cost": 300,
+      "uses": 1,
+      "effects": {
+        "advancedSplice": 1
+      },
+      "description": "Lets archive DNA splice with better control."
+    }
+  ]
+}

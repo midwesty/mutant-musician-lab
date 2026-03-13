@@ -1,19 +1,16 @@
+import { NEED_KEYS } from './constants.js';
 import { createMusicianFromChoices } from './musicianFactory.js';
-import { pick } from './utils.js';
 import { getDataStore } from './state.js';
+
 export function runCheat(state, code, selected){
-  const data=getDataStore();
-  switch(code){
-    case 'money': state.playerProfile.cash+=500; return 'Added $500.';
-    case 'maxNeeds': if(!selected) return 'No musician selected.'; Object.keys(selected.needs).forEach(k=>selected.needs[k]=100); selected.isCritical=false; return `${selected.name} is in suspiciously perfect condition.`;
-    case 'heal': if(!selected) return 'No musician selected.'; selected.needs.health=100; selected.isCritical=false; selected.isDead=false; return `${selected.name} has been aggressively healed.`;
-    case 'ageUp': if(!selected) return 'No musician selected.'; selected.createdAt -= 24*36e5; return `${selected.name} has been illegally aged.`;
-    case 'adult': if(!selected) return 'No musician selected.'; selected.createdAt = Date.now()-73*36e5; return `${selected.name} is now an adult.`;
-    case 'mutation': if(!selected) return 'No musician selected.'; const mut=pick(data.mutations?.mutations||[]); if(mut && !selected.mutationIds.includes(mut.id)) selected.mutationIds.push(mut.id); return mut?`${selected.name} gains mutation: ${mut.name}.`:'No mutation available.';
-    case 'spawn': const o=data.creationOptions; const choices={ biomass:pick(o.biomass).id, body:pick(o.body).id, neural:pick(o.neural).id, genre:pick(o.genres).id, vice:pick(o.vices).id, catalyst:pick(o.catalysts).id, role:pick(o.roles).id }; const newbie=createMusicianFromChoices(choices,'cheat_spawn'); state.musicians.push(newbie); state.playerProfile.selectedMusicianId=newbie.id; return `Spawned ${newbie.name}.`;
-    case 'revive': if(!selected) return 'No musician selected.'; selected.isDead=false; selected.isCritical=false; selected.deathAt=null; selected.needs.health=80; return `${selected.name} has been revived.`;
-    case 'freezeTime': state.clockState.freezeTime=!state.clockState.freezeTime; return `Freeze time: ${state.clockState.freezeTime?'ON':'OFF'}.`;
-    case 'fastTime': state.clockState.speedMultiplier=state.clockState.speedMultiplier===1?10:1; return `Time multiplier: ${state.clockState.speedMultiplier}x.`;
-    default: return 'Unknown cheat.';
-  }
+  if(code === 'cash') { state.playerProfile.cash += 500; return 'Added $500.'; }
+  if(code === 'maxNeeds' && selected){ NEED_KEYS.forEach(k=>selected.needs[k]=100); return `${selected.name} is stabilized.`; }
+  if(code === 'heal' && selected){ selected.needs.health = 100; selected.isDead = false; selected.isCritical = false; return `${selected.name} patched up.`; }
+  if(code === 'ageUp' && selected){ selected.createdAt -= 18 * 60 * 60 * 1000; return `${selected.name} pushed forward in time.`; }
+  if(code === 'adult' && selected){ selected.createdAt = Date.now() - (73 * 60 * 60 * 1000); return `${selected.name} forced to adulthood.`; }
+  if(code === 'freezeTime'){ state.clockState.freezeTime = !state.clockState.freezeTime; return `Freeze time: ${state.clockState.freezeTime ? 'on' : 'off'}.`; }
+  if(code === 'speedTime'){ state.clockState.speedMultiplier = state.clockState.speedMultiplier === 1 ? 8 : 1; return `Speed multiplier set to ${state.clockState.speedMultiplier}x.`; }
+  if(code === 'spawn'){ const c=getDataStore().creationOptions; const mus=createMusicianFromChoices({ biomass:c.biomassOptions[0].id, body:c.bodyOptions[0].id, neural:c.neuralOptions[0].id, genre:c.genreOptions[0].id, vice:c.viceOptions[0].id, catalyst:c.catalystOptions[0].id, role:c.roleOptions[0].id }, 'cheat_spawn'); state.musicians.push(mus); state.playerProfile.selectedMusicianId = mus.id; return `${mus.name} spawned.`; }
+  if(code === 'unlockSnapshot'){ state.labUpgrades.snapshotUnlocked = true; return 'Snapshot station permanently unlocked.'; }
+  return 'Cheat executed.';
 }

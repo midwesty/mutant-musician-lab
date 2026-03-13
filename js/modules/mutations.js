@@ -1,3 +1,12 @@
 import { getDataStore } from './state.js';
-export const getMutationObjects=(ids=[])=>ids.map(id=>(getDataStore().mutations?.mutations||[]).find(m=>m.id===id)).filter(Boolean);
-export function computeMutationMods(ids=[]){ const mods={}; getMutationObjects(ids).forEach(m=>Object.entries(m.mods||{}).forEach(([k,v])=>mods[k]=(mods[k]||0)+v)); return mods; }
+
+export function computeMutationMods(musician){
+  const defs = getDataStore().mutations || [];
+  return musician.mutationIds.reduce((acc, id)=>{
+    const def = defs.find(t=>t.id===id);
+    if(def?.mods){
+      Object.entries(def.mods).forEach(([k,v])=>{ acc[k] = (acc[k] || 0) + v; });
+    }
+    return acc;
+  }, {});
+}
