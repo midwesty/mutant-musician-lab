@@ -1,0 +1,646 @@
+{
+  "starterKits": [
+    {
+      "id": "garage_ghoul",
+      "name": "Garage Ghoul Kit",
+      "description": "A loud beginner pack with punk leanings, caffeine damage, and very little self-respect.",
+      "options": {
+        "biomass": "venue_mold",
+        "body": "compact_goblin",
+        "neural": "garage_dust",
+        "genre": "punk",
+        "vice": "caffeine",
+        "catalyst": "phantom_feedback_coil",
+        "role": "guitarist"
+      }
+    },
+    {
+      "id": "cryptid_crooner",
+      "name": "Cryptid Crooner Kit",
+      "description": "A murky vocal specimen grown on folk ballads, validation hunger, and moonlit serum.",
+      "options": {
+        "biomass": "cemetery_slime",
+        "body": "elegant_horror",
+        "neural": "church_echo",
+        "genre": "folk",
+        "vice": "validation",
+        "catalyst": "moonlit_serum",
+        "role": "vocalist"
+      }
+    },
+    {
+      "id": "synth_vermin",
+      "name": "Synth Vermin Kit",
+      "description": "A neon keyboard freak built from session goo, battery dreams, and forbidden energy tonics.",
+      "options": {
+        "biomass": "session_goo",
+        "body": "rat_boned",
+        "neural": "noise_static",
+        "genre": "electronic",
+        "vice": "energy_drinks",
+        "catalyst": "magnet_worm",
+        "role": "keys"
+      }
+    }
+  ],
+  "biomass": [
+    {
+      "id": "cemetery_slime",
+      "name": "Cemetery Slime",
+      "effects": {
+        "weirdness": 10,
+        "resilience": 4
+      },
+      "vectors": {
+        "skeletal": 12,
+        "nightmare": 10,
+        "elegant": 4
+      }
+    },
+    {
+      "id": "venue_mold",
+      "name": "Venue Mold",
+      "effects": {
+        "originality": 4,
+        "resilience": 6
+      },
+      "vectors": {
+        "fungal": 14,
+        "trashy": 10
+      }
+    },
+    {
+      "id": "tour_bus_soup",
+      "name": "Tour Bus Soup",
+      "effects": {
+        "ego": 5,
+        "charisma": 4
+      },
+      "vectors": {
+        "trashy": 14,
+        "bestial": 4
+      }
+    },
+    {
+      "id": "session_goo",
+      "name": "Unknown Session Goo",
+      "effects": {
+        "talent": 6,
+        "weirdness": 6
+      },
+      "vectors": {
+        "synthetic": 10,
+        "cute": 2,
+        "nightmare": 5
+      }
+    },
+    {
+      "id": "feral_protein",
+      "name": "Feral Pond Protein",
+      "effects": {
+        "resilience": 10,
+        "charisma": -2
+      },
+      "vectors": {
+        "aquatic": 12,
+        "bestial": 10
+      }
+    },
+    {
+      "id": "distilled_sweat",
+      "name": "Distilled Sweat",
+      "effects": {
+        "discipline": 6,
+        "ego": 3
+      },
+      "vectors": {
+        "humanoid": 8,
+        "trashy": 6
+      }
+    }
+  ],
+  "body": [
+    {
+      "id": "stringbean",
+      "name": "Stringbean",
+      "effects": {
+        "technique": 5,
+        "resilience": -2
+      },
+      "vectors": {
+        "humanoid": 10,
+        "elegant": 3
+      }
+    },
+    {
+      "id": "compact_goblin",
+      "name": "Compact Goblin",
+      "effects": {
+        "weirdness": 5,
+        "charisma": 2
+      },
+      "vectors": {
+        "bestial": 10,
+        "cute": 5,
+        "trashy": 7
+      }
+    },
+    {
+      "id": "amphibian_lump",
+      "name": "Amphibian Lump",
+      "effects": {
+        "resilience": 5,
+        "talent": 2
+      },
+      "vectors": {
+        "aquatic": 16,
+        "cute": 2
+      }
+    },
+    {
+      "id": "elegant_horror",
+      "name": "Elegant Horror",
+      "effects": {
+        "charisma": 7,
+        "weirdness": 5
+      },
+      "vectors": {
+        "elegant": 14,
+        "nightmare": 10
+      }
+    },
+    {
+      "id": "rat_boned",
+      "name": "Rat-Boned",
+      "effects": {
+        "originality": 4,
+        "resilience": 3
+      },
+      "vectors": {
+        "bestial": 8,
+        "trashy": 10
+      }
+    },
+    {
+      "id": "barrel_chested",
+      "name": "Barrel-Chested Freak",
+      "effects": {
+        "resilience": 8,
+        "technique": -2
+      },
+      "vectors": {
+        "humanoid": 4,
+        "bestial": 6,
+        "trashy": 6
+      }
+    }
+  ],
+  "neural": [
+    {
+      "id": "conservatory_extract",
+      "name": "Conservatory Extract",
+      "effects": {
+        "technique": 10,
+        "discipline": 6,
+        "ego": 2
+      },
+      "vectors": {
+        "elegant": 5,
+        "humanoid": 5
+      }
+    },
+    {
+      "id": "garage_dust",
+      "name": "Garage Dust",
+      "effects": {
+        "originality": 6,
+        "discipline": -2,
+        "resilience": 4
+      },
+      "vectors": {
+        "trashy": 12,
+        "bestial": 3
+      }
+    },
+    {
+      "id": "church_echo",
+      "name": "Church Echo",
+      "effects": {
+        "charisma": 6,
+        "talent": 5
+      },
+      "vectors": {
+        "elegant": 6,
+        "cute": 3
+      }
+    },
+    {
+      "id": "noise_static",
+      "name": "Noise Static",
+      "effects": {
+        "weirdness": 10,
+        "originality": 4
+      },
+      "vectors": {
+        "synthetic": 10,
+        "nightmare": 6
+      }
+    },
+    {
+      "id": "dive_bar_memory",
+      "name": "Dive Bar Memory",
+      "effects": {
+        "ego": 5,
+        "charisma": 4,
+        "discipline": -1
+      },
+      "vectors": {
+        "trashy": 10
+      }
+    },
+    {
+      "id": "unlicensed_frequencies",
+      "name": "Unlicensed Frequencies",
+      "effects": {
+        "weirdness": 8,
+        "talent": 4
+      },
+      "vectors": {
+        "synthetic": 5,
+        "nightmare": 5
+      }
+    }
+  ],
+  "genres": [
+    {
+      "id": "folk",
+      "name": "Folk",
+      "subtitle": "Porch Lament",
+      "roleBias": {
+        "vocalist": 6,
+        "strings": 5,
+        "guitarist": 4
+      },
+      "effects": {
+        "charisma": 3,
+        "discipline": 2
+      }
+    },
+    {
+      "id": "punk",
+      "name": "Punk",
+      "subtitle": "Trash Alley Doctrine",
+      "roleBias": {
+        "guitarist": 6,
+        "drummer": 5,
+        "bassist": 4
+      },
+      "effects": {
+        "originality": 5,
+        "ego": 3
+      }
+    },
+    {
+      "id": "metal",
+      "name": "Metal",
+      "subtitle": "Forge Hymns",
+      "roleBias": {
+        "guitarist": 6,
+        "drummer": 4,
+        "vocalist": 3
+      },
+      "effects": {
+        "resilience": 4,
+        "technique": 2
+      }
+    },
+    {
+      "id": "pop",
+      "name": "Pop",
+      "subtitle": "Synthetic Candy Pulse",
+      "roleBias": {
+        "vocalist": 6,
+        "keys": 5,
+        "producer": 4
+      },
+      "effects": {
+        "charisma": 5,
+        "ego": 2
+      }
+    },
+    {
+      "id": "jazz",
+      "name": "Jazz",
+      "subtitle": "Forbidden Chord Soup",
+      "roleBias": {
+        "keys": 5,
+        "bassist": 4,
+        "drummer": 4
+      },
+      "effects": {
+        "technique": 5,
+        "weirdness": 3
+      }
+    },
+    {
+      "id": "country",
+      "name": "Country",
+      "subtitle": "Truck Stop Prophecy",
+      "roleBias": {
+        "vocalist": 5,
+        "guitarist": 4,
+        "strings": 4
+      },
+      "effects": {
+        "charisma": 4,
+        "discipline": 2
+      }
+    },
+    {
+      "id": "classical",
+      "name": "Classical",
+      "subtitle": "Royal Bone Etiquette",
+      "roleBias": {
+        "strings": 6,
+        "keys": 5,
+        "vocalist": 3
+      },
+      "effects": {
+        "technique": 6,
+        "discipline": 4
+      }
+    },
+    {
+      "id": "electronic",
+      "name": "Electronic",
+      "subtitle": "Battery Dream Rot",
+      "roleBias": {
+        "keys": 6,
+        "producer": 5,
+        "noise_artist": 4
+      },
+      "effects": {
+        "originality": 4,
+        "weirdness": 4
+      }
+    }
+  ],
+  "vices": [
+    {
+      "id": "caffeine",
+      "name": "Caffeine",
+      "effects": {
+        "discipline": 2,
+        "rest": -6
+      },
+      "severity": "funny"
+    },
+    {
+      "id": "nicotine",
+      "name": "Nicotine",
+      "effects": {
+        "charisma": 1,
+        "health": -5
+      },
+      "severity": "grimy"
+    },
+    {
+      "id": "booze",
+      "name": "Booze",
+      "effects": {
+        "ego": 2,
+        "technique": -2
+      },
+      "severity": "grimy"
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "effects": {
+        "charisma": 3,
+        "mood": -5
+      },
+      "severity": "funny"
+    },
+    {
+      "id": "attention",
+      "name": "Attention",
+      "effects": {
+        "charisma": 4,
+        "discipline": -1
+      },
+      "severity": "funny"
+    },
+    {
+      "id": "energy_drinks",
+      "name": "Energy Drinks",
+      "effects": {
+        "originality": 2,
+        "rest": -7
+      },
+      "severity": "funny"
+    },
+    {
+      "id": "painkillers",
+      "name": "Painkillers",
+      "effects": {
+        "resilience": 1,
+        "health": -6
+      },
+      "severity": "grimy"
+    },
+    {
+      "id": "ritual_smoke",
+      "name": "Ritual Smoke",
+      "effects": {
+        "weirdness": 3,
+        "health": -4
+      },
+      "severity": "mix"
+    },
+    {
+      "id": "doomscrolling",
+      "name": "Doomscrolling",
+      "effects": {
+        "originality": 2,
+        "mood": -6
+      },
+      "severity": "funny"
+    },
+    {
+      "id": "cough_syrup",
+      "name": "Cough Syrup Mysticism",
+      "effects": {
+        "weirdness": 5,
+        "technique": -3
+      },
+      "severity": "mix"
+    }
+  ],
+  "catalysts": [
+    {
+      "id": "radioactive_reed",
+      "name": "Radioactive Reed",
+      "effects": {
+        "talent": 2,
+        "weirdness": 7
+      },
+      "vectors": {
+        "bestial": 3,
+        "synthetic": 6
+      }
+    },
+    {
+      "id": "fungal_choir_spore",
+      "name": "Fungal Choir Spore",
+      "effects": {
+        "charisma": 2,
+        "weirdness": 5
+      },
+      "vectors": {
+        "fungal": 15
+      }
+    },
+    {
+      "id": "phantom_feedback_coil",
+      "name": "Phantom Feedback Coil",
+      "effects": {
+        "originality": 6,
+        "weirdness": 4
+      },
+      "vectors": {
+        "synthetic": 8,
+        "nightmare": 8
+      }
+    },
+    {
+      "id": "moonlit_serum",
+      "name": "Moonlit Serum",
+      "effects": {
+        "charisma": 4,
+        "talent": 3
+      },
+      "vectors": {
+        "elegant": 9,
+        "cute": 4
+      }
+    },
+    {
+      "id": "bone_dust",
+      "name": "Bone Dust",
+      "effects": {
+        "resilience": 5,
+        "charisma": -1
+      },
+      "vectors": {
+        "skeletal": 14
+      }
+    },
+    {
+      "id": "magnet_worm",
+      "name": "Magnet Worm",
+      "effects": {
+        "technique": 2,
+        "weirdness": 6
+      },
+      "vectors": {
+        "synthetic": 12
+      }
+    },
+    {
+      "id": "tube_amp_blood",
+      "name": "Vintage Tube Amp Blood",
+      "effects": {
+        "talent": 5,
+        "ego": 3
+      },
+      "vectors": {
+        "trashy": 6,
+        "nightmare": 5
+      }
+    }
+  ],
+  "roles": [
+    {
+      "id": "vocalist",
+      "name": "Vocalist",
+      "effects": {
+        "charisma": 5,
+        "talent": 3
+      }
+    },
+    {
+      "id": "guitarist",
+      "name": "Guitarist",
+      "effects": {
+        "technique": 3,
+        "ego": 3
+      }
+    },
+    {
+      "id": "bassist",
+      "name": "Bassist",
+      "effects": {
+        "discipline": 4,
+        "resilience": 2
+      }
+    },
+    {
+      "id": "drummer",
+      "name": "Drummer",
+      "effects": {
+        "resilience": 4,
+        "technique": 2
+      }
+    },
+    {
+      "id": "keys",
+      "name": "Keys",
+      "effects": {
+        "technique": 4,
+        "originality": 2
+      }
+    },
+    {
+      "id": "strings",
+      "name": "Strings",
+      "effects": {
+        "discipline": 5,
+        "technique": 2
+      }
+    },
+    {
+      "id": "noise_artist",
+      "name": "Noise Artist",
+      "effects": {
+        "weirdness": 6,
+        "originality": 3
+      }
+    },
+    {
+      "id": "producer",
+      "name": "Producer Goblin",
+      "effects": {
+        "originality": 4,
+        "discipline": 2
+      }
+    }
+  ],
+  "bonusDNA": [
+    {
+      "id": "cursed_master_tape_dust",
+      "name": "Cursed Master-Tape Dust",
+      "description": "Adds bonus weirdness and rare mutation chance."
+    },
+    {
+      "id": "black_market_cartilage",
+      "name": "Black-Market Cartilage",
+      "description": "Adds resilience and body mutation chance."
+    },
+    {
+      "id": "forgotten_merch_resin",
+      "name": "Forgotten Merch Resin",
+      "description": "Adds charisma and trashy mutation bias."
+    }
+  ]
+}

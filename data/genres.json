@@ -1,0 +1,114 @@
+[
+  {
+    "id": "folk",
+    "name": "Folk",
+    "subtitle": "Porch Lament",
+    "roleBias": {
+      "vocalist": 6,
+      "strings": 5,
+      "guitarist": 4
+    },
+    "effects": {
+      "charisma": 3,
+      "discipline": 2
+    }
+  },
+  {
+    "id": "punk",
+    "name": "Punk",
+    "subtitle": "Trash Alley Doctrine",
+    "roleBias": {
+      "guitarist": 6,
+      "drummer": 5,
+      "bassist": 4
+    },
+    "effects": {
+      "originality": 5,
+      "ego": 3
+    }
+  },
+  {
+    "id": "metal",
+    "name": "Metal",
+    "subtitle": "Forge Hymns",
+    "roleBias": {
+      "guitarist": 6,
+      "drummer": 4,
+      "vocalist": 3
+    },
+    "effects": {
+      "resilience": 4,
+      "technique": 2
+    }
+  },
+  {
+    "id": "pop",
+    "name": "Pop",
+    "subtitle": "Synthetic Candy Pulse",
+    "roleBias": {
+      "vocalist": 6,
+      "keys": 5,
+      "producer": 4
+    },
+    "effects": {
+      "charisma": 5,
+      "ego": 2
+    }
+  },
+  {
+    "id": "jazz",
+    "name": "Jazz",
+    "subtitle": "Forbidden Chord Soup",
+    "roleBias": {
+      "keys": 5,
+      "bassist": 4,
+      "drummer": 4
+    },
+    "effects": {
+      "technique": 5,
+      "weirdness": 3
+    }
+  },
+  {
+    "id": "country",
+    "name": "Country",
+    "subtitle": "Truck Stop Prophecy",
+    "roleBias": {
+      "vocalist": 5,
+      "guitarist": 4,
+      "strings": 4
+    },
+    "effects": {
+      "charisma": 4,
+      "discipline": 2
+    }
+  },
+  {
+    "id": "classical",
+    "name": "Classical",
+    "subtitle": "Royal Bone Etiquette",
+    "roleBias": {
+      "strings": 6,
+      "keys": 5,
+      "vocalist": 3
+    },
+    "effects": {
+      "technique": 6,
+      "discipline": 4
+    }
+  },
+  {
+    "id": "electronic",
+    "name": "Electronic",
+    "subtitle": "Battery Dream Rot",
+    "roleBias": {
+      "keys": 6,
+      "producer": 5,
+      "noise_artist": 4
+    },
+    "effects": {
+      "originality": 4,
+      "weirdness": 4
+    }
+  }
+]

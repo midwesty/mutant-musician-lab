@@ -1,0 +1,15 @@
+{
+  "uiClick": "assets/audio/ui/click.mp3",
+  "success": "assets/audio/ui/success.mp3",
+  "error": "assets/audio/ui/error.mp3",
+  "feed": "assets/audio/events/feed.mp3",
+  "clean": "assets/audio/events/clean.mp3",
+  "practice": "assets/audio/events/practice.mp3",
+  "gigStart": "assets/audio/events/gig-start.mp3",
+  "gigEnd": "assets/audio/events/gig-end.mp3",
+  "alert": "assets/audio/events/alert.mp3",
+  "mutation": "assets/audio/events/mutation.mp3",
+  "death": "assets/audio/events/death.mp3",
+  "revive": "assets/audio/events/revive.mp3",
+  "battle": "assets/audio/events/battle.mp3"
+}

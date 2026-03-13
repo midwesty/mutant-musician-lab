@@ -1,0 +1,10 @@
+import { DEFAULT_STATE } from './constants.js';
+import { deepClone } from './utils.js';
+let state = deepClone(DEFAULT_STATE);
+let dataStore = {};
+export const getState=()=>state;
+export const setState=next=>state=next;
+export const mutateState=fn=>(fn(state), state);
+export const resetState=()=>state=deepClone(DEFAULT_STATE);
+export const setDataStore=data=>dataStore=data;
+export const getDataStore=()=>dataStore;
