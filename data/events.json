@@ -1,10 +1,12 @@
 [
   {"stage":["embryo"],"text":"thrashed the tube fluid into a foam spiral.","effects":{"cleanliness":-10,"mood":3}},
+  {"stage":["embryo"],"text":"drew boobs on tube glass.","effects":{"stress":5,"mood":3}},
   {"stage":["infant","child"],"text":"swallowed a guitar pick and looked smug about it.","effects":{"health":-6,"mood":2}},
   {"stage":["child","teen"],"text":"learned jazz against your wishes.","effects":{"inspiration":8,"mood":-3}},
   {"stage":["teen"],"text":"posted a cryptic 3:14 AM rant.","effects":{"stress":6,"fame":3}},
   {"stage":["teen","adult"],"text":"trashed the shared room and blamed acoustics.","effects":{"cleanliness":-14,"mood":2}},
   {"stage":["adult"],"text":"started a petty feud with a sound tech.","effects":{"stress":8,"fame":4},"addTrait":"melodramatic"},
   {"stage":["adult"],"text":"wrote a masterpiece and refused to explain it.","effects":{"inspiration":15,"fame":6},"addTrait":"unwashed_genius"},
+  {"stage":["adult"],"text":"ate 3 pounds of gas station food.","effects":{"stress":-8,"cleanliness":-8},"addTrait":"bus_sleeper"},
   {"stage":["adult"],"text":"slept in the merch bin.","effects":{"rest":10,"cleanliness":-6}}
 ]
