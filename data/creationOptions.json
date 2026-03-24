@@ -48,6 +48,8 @@
     {"id":"jazz","name":"Jazz — Forbidden Chord Soup","stats":{"talent":6,"originality":5},"vectors":{"elegant":8,"nightmare":4}},
     {"id":"country","name":"Country — Truck Stop Prophecy","stats":{"charisma":4,"resilience":4},"vectors":{"humanoid":6}},
     {"id":"classical","name":"Classical — Royal Bone Etiquette","stats":{"technique":7,"discipline":7},"vectors":{"skeletal":6,"elegant":12}},
+    {"id":"dance","name":"Dance - Litterally Cannot Stop","stats":{"technique":7,"discipline":7},"vectors":{"skeletal":6,"elegant":12}},
+    {"id":"mutant_metal","name":"Mutant Metal — Angry and Mutated","stats":{"originality":7,"weirdness":7},"vectors":{"skeletal":10,"bestial":10}},
     {"id":"electronic","name":"Electronic — Battery Dream Rot","stats":{"weirdness":7,"technique":3},"vectors":{"synthetic":16}}
   ],
   "viceOptions": [
@@ -78,6 +80,7 @@
     {"id":"keys","name":"Keys","stats":{"technique":6,"talent":3}},
     {"id":"noise_artist","name":"Noise Artist","stats":{"weirdness":7,"originality":4}},
     {"id":"producer","name":"Producer Goblin","stats":{"technique":5,"discipline":4}},
+    {"id":"brass","name":"Brass Maniac","stats":{"technique":4,"discipline":5}},
     {"id":"strings","name":"Strings Freak","stats":{"talent":5,"technique":4}}
   ]
 }
