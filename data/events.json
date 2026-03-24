@@ -1,7 +1,7 @@
 [
   {"stage":["embryo"],"text":"thrashed the tube fluid into a foam spiral.","effects":{"cleanliness":-10,"mood":3}},
   {"stage":["embryo"],"text":"drew boobs on tube glass.","effects":{"stress":5,"mood":3}},
-  {"stage":["embryo"],"text":"taps out rythems on tank filter.","effects":{"inspiration":2,"mood":4}},
+  {"stage":["embryo"],"text":"tapped out rythyms on tank filter.","effects":{"inspiration":2,"mood":4}},
   {"stage":["infant"],"text":"screamed for 2 hours straight.","effects":{"inspiration":2,"mood":2},"addTrait":"prodigy"},
   {"stage":["infant"],"text":"wont stop touching hot surfaces.","effects":{"stress":-5,"cleanliness":-3}},
   {"stage":["infant","child"],"text":"swallowed a guitar pick and looked smug about it.","effects":{"health":-6,"mood":2}},
